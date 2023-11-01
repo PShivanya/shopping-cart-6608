@@ -1,0 +1,118 @@
+<html>
+    <head>
+
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div id="login-section" class="hidden">
+        <h1>Login</h1>
+        <form onsubmit="return login">
+            <input type="text" id="username" placeholder="Username" required=""><br>
+            <input type="password" id="password" placeholder="Password" required=""><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showRegistration()">Register here</a></p>
+    </div>
+
+
+	<div id="registration-section" class="hidden">
+        <h1>Register</h1>
+
+        <form onsubmit="return register()">
+            <input type="text" id="regUsername" placeholder="Username" required=""><br>
+            <input type="password" id="regPassword" placeholder="Password" required=""><br>
+            <input type="date" id="date of birth" placeholder="dateofbirth" required=""><br>
+            <input type="email" id="email" placeholder="email" required=""><br>
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+    </div>
+	<div id="main-section" class="hidden">
+        <h1>Shopping Cart</h1>
+
+	<div class="products">
+        <div class="product">
+            <h2>SMART WATCH</h2>
+            <img src="watch.png" width="200px" height="200px">
+            <p>SMART WATCH that has many of the features of a smartphone Buy the latest smartwatches from the leading brands</p>
+            <p>Price: $2500</p>
+            <button class="add-to-cart" onclick="addToCart('SMART WATCH', 2500)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <h2>SHOE</h2>
+            <img src="shoe.png" width="200px" height="200px">
+            <p>Buy Metro Shoes online in India. Select from a huge variety of stylish shoes for men, women & kids at the best prices.</p>
+            <p>Price: $1800</p>
+            <button class="add-to-cart" onclick="addToCart('SHOE', 1800)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>SAREE</h2>
+            <img src="saree.png" width="200px" height="200px">
+            <p>Buy latest designer sarees online at best price. Shop for best quality of cotton sarees, silk sarees, georgette sarees and many more only at Peachmode.</p>
+            <p>Price: $1500</p>
+            <button class="add-to-cart" onclick="addToCart('SAREE', 1500)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>WESTERN WEAR</h2>
+            <img src="western.png" width="200px" height="200px">
+            <p>WESTERN WEAR Dress For Women: Choose from a wide range of latest western wear for women online.</p>
+            <p>Price: $800</p>
+            <button class="add-to-cart" onclick="addToCart('WESTERN WEAR',800)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h2>KURTI</h2>
+            <img src="kurti.png" width="200px" height="200px">
+            <p>KURTI Buy stylish Kurtis from wide range in online.Shop for trendiest Kurtis at lowest prices & stunning </p>
+            <p>Price: $900</p>
+            <button class="add-to-cart" onclick="addToCart('KURTI', 900)">Add to Cart</button>
+        </div>
+    	</div>
+
+        <div class="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button onclick="checksout()">Checkout</button>
+        </div>
+    </div>
+
+<script>
+  let cartItems = [];
+
+function addToCart(product, price) {
+    cartItems.push({product, price});
+    updateCart();
+}
+
+function updateCart() {
+    let cartList = document.getElementById("cart-items");
+    let totalElement = document.getElementById("total");
+    let total = 0;
+
+    cartList.innerHTML = "";
+    cartItems.forEach(item => {
+        let listItem = document.createElement("li");
+        listItem.innerText = `${item.product} - $${item.price}`;
+        cartList.appendChild(listItem);
+        total += item.price;
+    });
+
+    totalElement.innerText = total;
+}
+
+
+
+
+// Add product and cart logic similar to the previous example
+
+function checksout() {
+    alert('Thank you for your Purchase')
+}
+</script>
+
+
+</body></html>
